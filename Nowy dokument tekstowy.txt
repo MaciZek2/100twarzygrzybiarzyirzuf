@@ -1,8 +1,5 @@
 #include <iostream>
-
 using namespace std;
-
-
 int nwd(int a, int b) {
     if (b == 0) {
         return a;
