@@ -1,5 +1,8 @@
 #include <iostream>
+
 using namespace std;
+
+//funkcaja licząca NWD
 int nwd(int a, int b) {
     if (b == 0) {
         return a;
@@ -7,21 +10,21 @@ int nwd(int a, int b) {
     return nwd(b, a % b);
 }
 
-
+//funkcaja skracająca ułamki
 void skroc(int& licznik, int& mianownik) {
     int dzielnik = nwd(licznik, mianownik);
     licznik /= dzielnik;
     mianownik /= dzielnik;
 }
 
-
+//funkcaja licząca dodawanie
 void dodaj(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
     wynik_l = l1 * m2 + l2 * m1;
     wynik_m = m1 * m2;
     skroc(wynik_l, wynik_m);
 }
 
-
+//funkcaja licząca odejmowanie
 void odejmij(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
     wynik_l = l1 * m2 - l2 * m1;
     wynik_m = m1 * m2;
