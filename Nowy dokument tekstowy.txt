@@ -1,0 +1,68 @@
+#include <iostream>
+
+using namespace std;
+
+
+int nwd(int a, int b) {
+    if (b == 0) {
+        return a;
+    }
+    return nwd(b, a % b);
+}
+
+
+void skroc(int& licznik, int& mianownik) {
+    int dzielnik = nwd(licznik, mianownik);
+    licznik /= dzielnik;
+    mianownik /= dzielnik;
+}
+
+
+void dodaj(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
+    wynik_l = l1 * m2 + l2 * m1;
+    wynik_m = m1 * m2;
+    skroc(wynik_l, wynik_m);
+}
+
+
+void odejmij(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
+    wynik_l = l1 * m2 - l2 * m1;
+    wynik_m = m1 * m2;
+    skroc(wynik_l, wynik_m);
+}
+
+
+void pomnoz(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
+    wynik_l = l1 * l2;
+    wynik_m = m1 * m2;
+    skroc(wynik_l, wynik_m);
+}
+
+
+void podziel(int l1, int m1, int l2, int m2, int& wynik_l, int& wynik_m) {
+    wynik_l = l1 * m2;
+    wynik_m = l2 * m1;
+    skroc(wynik_l, wynik_m);
+}
+
+int main() {
+    int l1, m1, l2, m2;
+    cout << "Podaj licznik i mianownik pierwszego ulamka: ";
+    cin >> l1 >> m1;
+    cout << "Podaj licznik i mianownik drugiego ulamka: ";
+    cin >> l2 >> m2;
+
+    int wynik_l, wynik_m;
+    dodaj(l1, m1, l2, m2, wynik_l, wynik_m);
+    cout << "Suma: " << wynik_l << "/" << wynik_m << endl;
+
+    odejmij(l1, m1, l2, m2, wynik_l, wynik_m);
+    cout << "Roznica: " << wynik_l << "/" << wynik_m << endl;
+
+    pomnoz(l1, m1, l2, m2, wynik_l, wynik_m);
+    cout << "Iloczyn: " << wynik_l << "/" << wynik_m << endl;
+
+    podziel(l1, m1, l2, m2, wynik_l, wynik_m);
+    cout << "Iloraz: " << wynik_l << "/" << wynik_m << endl;
+    return 0;
+}
